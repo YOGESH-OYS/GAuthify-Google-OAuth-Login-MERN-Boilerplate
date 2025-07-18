@@ -21,8 +21,8 @@ router.get(
     });
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: process.env.NODE_ENV === "production" ? "lax" : "none",
     });
     res.redirect(`${process.env.CLIENT_URL}/dashboard`);
   }
